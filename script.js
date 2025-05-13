@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 logo: 'logos/verticolls_logo.png',
                 departamentos: [
                     { id: 'ventas-v', nombre: 'Ventas', nombreCarpeta: 'ventas-v', categorias: createEmptyCategories() },
+                    { id: 'Administracion-v', nombre: 'Administracion', nombreCarpeta: 'Administracion-v', categorias: createEmptyCategories() },
                     { id: 'operaciones-v', nombre: 'Operaciones', nombreCarpeta: 'Operaciones', categorias: createEmptyCategories() },
                     { id: 'rh-v', nombre: 'Recursos Humanos', nombreCarpeta: 'rh-v', categorias: {
                         manuales: [], politicas: [], protocolos: [], instructivos: [],
@@ -28,9 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 nombre: 'Deco VCP',
                 logo: 'logos/decovcp_logo.png',
                 departamentos: [
+                    { id: 'ventas-v', nombre: 'Ventas', nombreCarpeta: 'ventas-v', categorias: createEmptyCategories() },
+                    { id: 'Administracion-v', nombre: 'Administracion', nombreCarpeta: 'Administracion-v', categorias: createEmptyCategories() },
                     {
-                        id: 'operativos-d',
-                        nombre: 'Operativos',
+                        id: 'operaciones-v',
+                        nombre: 'Operaciones',
                         nombreCarpeta: 'Operaciones', // Nombre de la carpeta física
                         categorias: {
                             manuales: [
@@ -58,8 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 nombre: 'Herralum',
                 logo: 'logos/herralum_logo.png',
                 departamentos: [
-                    { id: 'produccion-h', nombre: 'Producción', nombreCarpeta: 'produccion-h', categorias: createEmptyCategories() },
-                    { id: 'logistica-h', nombre: 'Logística', nombreCarpeta: 'logistica-h', categorias: createEmptyCategories() }
+                    { id: 'ventas-v', nombre: 'Ventas', nombreCarpeta: 'ventas-v', categorias: createEmptyCategories() },
+                    { id: 'Administracion-v', nombre: 'Administracion', nombreCarpeta: 'Administracion-v', categorias: createEmptyCategories() },
+                    { id: 'operaciones-v', nombre: 'Operaciones', nombreCarpeta: 'Operaciones', categorias: createEmptyCategories() },
                 ]
             }
         ],
