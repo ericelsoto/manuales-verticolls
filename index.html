@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Documentos Operativos</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Considera añadir Font Awesome si quieres iconos más variados -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+</head>
+<body>
+    <header>
+        <h1>Gestor de Documentos Operativos</h1>
+        <div class="admin-toggle">
+            <label for="adminMode">Modo Administrador:</label>
+            <input type="checkbox" id="adminMode">
+        </div>
+    </header>
+
+    <nav id="breadcrumbs" aria-label="breadcrumb">
+        <!-- Las migas de pan se generarán aquí -->
+    </nav>
+
+    <main>
+        <section id="empresas-selector">
+            <h2>Selecciona una Empresa</h2>
+            <div id="logos-container">
+                <!-- Los logos se cargarán aquí por JS -->
+            </div>
+        </section>
+
+        <section id="departamentos-container" class="hidden">
+            <h2 id="departamentos-title">Departamentos</h2>
+            <ul id="departamentos-list"></ul>
+        </section>
+
+        <section id="categorias-container" class="hidden">
+            <h2 id="categorias-title">Categorías</h2>
+            <ul id="categorias-list"></ul>
+        </section>
+        
+        <section id="documentos-container" class="hidden">
+            <h2 id="documentos-title">Documentos</h2>
+            <ul id="documentos-list"></ul>
+        </section>
+
+        <section id="admin-panel" class="hidden">
+            <h2>Panel de Administración</h2>
+            <div>
+                <label for="empresaAdmin">Empresa:</label>
+                <select id="empresaAdmin"></select>
+            </div>
+            <div>
+                <label for="departamentoAdmin">Departamento:</label>
+                <select id="departamentoAdmin"></select>
+            </div>
+            <div>
+                <label for="categoriaAdmin">Categoría:</label>
+                <select id="categoriaAdmin">
+                    <option value="manuales">Manuales</option>
+                    <option value="politicas">Políticas</option>
+                    <option value="protocolos">Protocolos</option>
+                    <option value="instructivos">Instructivos</option>
+                    <option value="documentos">Documentos Generales</option>
+                    <option value="videos">Videos</option>
+                </select>
+            </div>
+            <div>
+                <label for="docNombreAdmin">Nombre del Documento/Video:</label>
+                <input type="text" id="docNombreAdmin">
+            </div>
+            <div>
+                <label for="fileAdmin">Seleccionar Archivo:</label>
+                <input type="file" id="fileAdmin">
+            </div>
+            <div id="drag-drop-area">
+                <p>O arrastra y suelta el archivo aquí</p>
+            </div>
+             <div>
+                <label for="videoFileAdmin">(Opcional) Video Instructivo para Manual:</label>
+                <input type="file" id="videoFileAdmin">
+            </div>
+            <button id="subirDocAdmin">Subir Documento/Video (Simulado)</button>
+            <p id="uploadStatus"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Gestor de Documentos</p>
+    </footer>
+
+    <!-- Modal para QR -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Código QR del Documento</h2>
+            <div id="qrcode"></div>
+            <p id="qrDocName"></p>
+        </div>
+    </div>
+
+    <!-- Modal para Video -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button-video">×</span>
+            <h2 id="videoTitleModal">Video Instructivo</h2>
+            <video id="videoPlayer" controls width="100%"></video>
+        </div>
+    </div>
+
+    <script src="qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

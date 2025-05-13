@@ -1,0 +1,491 @@
+:root {
+    --color-primario: #2B6CB0;
+    --color-secundario: #A0AEC0;
+    --color-fondo: #F7FAFC;
+    --color-texto: #1A202C;
+    --color-texto-claro: #FFFFFF;
+    --color-borde: #E2E8F0;
+    --color-hover: #2C5282;
+    --color-error: #E53E3E;
+    --color-success: #38A169;
+    --color-activo-fondo: #EBF8FF; /* Fondo para elemento activo */
+    --color-activo-borde: var(--color-primario);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    transition: background-color 0.3s; /* Transición suave para tema oscuro (futuro) */
+}
+
+header {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.admin-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+.admin-toggle label {
+    margin-right: 8px;
+}
+.admin-toggle input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+
+#breadcrumbs {
+    background-color: #fff;
+    padding: 0.75rem 2rem;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+#breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#breadcrumbs li {
+    display: flex;
+    align-items: center;
+}
+
+#breadcrumbs li a {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+#breadcrumbs li a:hover {
+    text-decoration: underline;
+}
+
+#breadcrumbs li:not(:last-child)::after {
+    content: ">";
+    margin: 0 0.5em;
+    color: var(--color-secundario);
+}
+#breadcrumbs li.active-breadcrumb span {
+    color: var(--color-texto);
+    font-weight: bold;
+}
+
+
+main {
+    padding: 1rem 2rem 2rem 2rem; /* Ajustado padding */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    background-color: var(--color-texto-claro);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+section:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+
+h2 {
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-borde);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+#logos-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem; /* Espacio entre logos */
+}
+
+#logos-container img {
+    max-width: 180px; /* Ligeramente más pequeño */
+    max-height: 90px;
+    object-fit: contain; /* Asegura que el logo no se distorsione */
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    border: 3px solid transparent;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff; /* Fondo para que resalten si son transparentes */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#logos-container img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+#logos-container img.active-selection {
+    border-color: var(--color-activo-borde);
+    box-shadow: 0 0 0 3px var(--color-activo-borde);
+    transform: scale(1.05);
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 0.85rem 0.5rem; /* Añadido padding lateral */
+    border-bottom: 1px solid var(--color-borde);
+    display: flex; /* Para alinear mejor el texto y acciones */
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+ul li:hover {
+    background-color: #f9fafb;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+ul li a, .doc-actions span { /* Enlaces en listas de depto/cat */
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: 500; /* Un poco menos bold */
+    cursor: pointer;
+    padding: 0.5rem;
+    display: block;
+    flex-grow: 1; /* Para que el área clickeable sea mayor */
+}
+
+ul li a:hover, .doc-actions span:hover {
+    text-decoration: none;
+    color: var(--color-hover);
+}
+ul li.active-selection > a, 
+ul li.active-selection { /* Resaltar elemento de lista activo */
+    background-color: var(--color-activo-fondo);
+    color: var(--color-primario) !important; /* Importante para el texto del enlace */
+    font-weight: bold;
+    border-left: 4px solid var(--color-activo-borde);
+    padding-left: calc(0.5rem - 4px); /* Ajustar padding por el borde */
+}
+
+
+.doc-item .doc-name { /* Clase para el nombre del documento */
+    flex-grow: 1;
+    margin-right: 1rem; /* Espacio antes de las acciones */
+}
+
+.doc-actions button, .doc-actions span {
+    margin-left: 8px; /* Espacio reducido */
+    background: var(--color-texto-claro);
+    border: 1px solid var(--color-secundario);
+    color: var(--color-primario);
+    padding: 6px 12px; /* Ligeramente más padding */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    display: inline-flex; /* Para alinear iconos si se añaden */
+    align-items: center;
+    gap: 5px; /* Espacio entre icono y texto */
+}
+.doc-actions .view-btn { /* Enlace "Ver Documento" estilizado como botón */
+    text-decoration: none;
+    color: var(--color-primario);
+}
+
+
+.doc-actions .delete-btn {
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+.doc-actions .delete-btn:hover {
+     background-color: var(--color-error) !important; /* Hover para delete */
+     color: var(--color-texto-claro) !important;
+}
+
+
+.doc-actions button:hover, .doc-actions span:hover, .doc-actions .view-btn:hover {
+    background-color: var(--color-borde) !important; /* !important para sobrescribir */
+    border-color: var(--color-hover);
+    color: var(--color-hover) !important;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+/* Admin Panel */
+#admin-panel div {
+    margin-bottom: 1.2rem;
+}
+
+#admin-panel label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: #4A5568; /* Gris más oscuro para labels */
+}
+
+#admin-panel input[type="text"],
+#admin-panel select,
+#admin-panel input[type="file"] {
+    width: 100%; /* Hacer que ocupe todo el ancho disponible */
+    padding: 0.6rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+#admin-panel input[type="text"]:focus,
+#admin-panel select:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.2);
+    outline: none;
+}
+
+
+#admin-panel button {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#admin-panel button:hover {
+    background-color: var(--color-hover);
+    transform: translateY(-1px);
+}
+#admin-panel button:active {
+    transform: translateY(0px);
+}
+
+
+#drag-drop-area {
+    border: 2px dashed var(--color-secundario);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 6px;
+    margin-top: 1rem;
+    background-color: #fdfdff;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+#drag-drop-area.hover {
+    border-color: var(--color-primario);
+    background-color: var(--color-activo-fondo);
+}
+#uploadStatus {
+    margin-top: 1rem;
+    font-size: 0.9em;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+#uploadStatus.success {
+    color: var(--color-success);
+    background-color: #F0FFF4;
+    border: 1px solid #C6F6D5;
+}
+#uploadStatus.error {
+    color: var(--color-error);
+    background-color: #FFF5F5;
+    border: 1px solid #FEB2B2;
+}
+
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Más oscuro */
+    backdrop-filter: blur(3px); /* Efecto blur si el navegador lo soporta */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 8% auto; /* Ligeramente más arriba */
+    padding: 30px;
+    border: 1px solid var(--color-borde);
+    width: 90%; /* Más responsivo */
+    max-width: 450px; /* Para QR modal */
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+}
+#videoModal .modal-content {
+    max-width: 900px; 
+}
+
+
+.close-button, .close-button-video {
+    color: var(--color-secundario);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1; /* Para mejor alineación */
+}
+
+.close-button:hover, .close-button:focus,
+.close-button-video:hover, .close-button-video:focus {
+    color: var(--color-texto);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#qrcode {
+    margin: 25px auto;
+    display: flex; /* Para centrar la imagen del QR si es más pequeña */
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Fondo blanco para el QR en caso de que el div tenga otro fondo */
+    padding: 10px; /* Espacio alrededor del QR */
+    border-radius: 5px;
+}
+#qrcode img {
+    /* qrcode.js genera un canvas o img. Si es img, esto ayuda */
+    display: block; 
+    margin: auto;
+}
+
+
+#qrDocName, #videoTitleModal {
+    font-weight: 600;
+    margin-top: 15px;
+    color: var(--color-primario);
+    font-size: 1.2em;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #E2E8F0;
+    color: #4A5568;
+    font-size: 0.9rem;
+    margin-top: 3rem; /* Más espacio */
+    border-top: 1px solid var(--color-borde);
+}
+
+/* Iconos (Unicode simple, considera Font Awesome para más opciones) */
+.icon-view::before { content: "👁️ "; } /* Ojo */
+.icon-qr::before { content: "📱 "; } /* Celular para QR */
+.icon-video::before { content: "▶️ "; } /* Triángulo de play */
+.icon-delete::before { content: "🗑️ "; } /* Papelera */
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    .admin-toggle {
+        font-size: 0.8rem;
+        top: 10px;
+        right: 10px;
+    }
+    #breadcrumbs {
+        padding: 0.5rem 1rem;
+    }
+    main {
+        padding: 1rem;
+    }
+    #logos-container img {
+        max-width: 140px;
+        max-height: 70px;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    ul li {
+        padding: 0.7rem 0.3rem;
+    }
+    .doc-actions button, .doc-actions span, .doc-actions .view-btn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+        margin-left: 5px;
+    }
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+        margin: 15% auto;
+    }
+    #videoModal .modal-content {
+        margin: 5% auto; /* Más espacio para video en móvil */
+    }
+
+    #drag-drop-area {
+        padding: 1.5rem;
+    }
+    #admin-panel button {
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+    #logos-container {
+        flex-direction: column; /* Apila los logos */
+        align-items: center;
+    }
+    #logos-container img {
+        max-width: 70%; 
+        margin-bottom: 1rem;
+    }
+    .doc-item {
+        flex-direction: column; /* Apila nombre y acciones */
+        align-items: flex-start;
+    }
+    .doc-item .doc-name {
+        margin-bottom: 0.5rem;
+    }
+    .doc-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start; /* Alinea botones a la izquierda */
+    }
+    .doc-actions button, .doc-actions span, .doc-actions .view-btn {
+        margin-left: 0;
+        margin-right: 5px; /* Espacio entre botones */
+    }
+}
